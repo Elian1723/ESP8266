@@ -1,0 +1,6 @@
+@ESP8266_HostAddress = http://localhost:5165
+
+GET {{ESP8266_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
