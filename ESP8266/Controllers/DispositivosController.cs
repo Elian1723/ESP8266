@@ -33,6 +33,21 @@ namespace ESP8266.Controllers
             }
         }
 
+        [HttpGet("{id}/Estado")]
+        public IActionResult ObtenerEstado(int id)
+        {
+            var dispositivo = dbContext.Dispositivos.Where(p => p.IdDispositivo == id).FirstOrDefault();
+
+            if (dispositivo != null)
+            {
+                return Ok(dispositivo.Estado == true ? "1" : "0");
+            }
+            else
+            {
+                return NotFound("No se encontró el dispositivo");
+            }
+        }
+
         [HttpPut("{id}")]
         public IActionResult ActualizarEstado(int id, [FromBody] bool estado)
         {
